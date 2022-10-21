@@ -1,0 +1,50 @@
+<div>
+    {% if user_products %}
+    {% for product in user_products %}
+    <div class="card" style="max-height: 200px;">
+        <div class="row g-0 ">
+            <div class="col-md-2">
+                <img src="{{ product.product.image.url}}" class="img-responsive" width="170px" height="170px"
+                    alt="{{ product.title }}">
+            </div>
+            <div class="col-md-4">
+                <div id="height-center" class="card-body">
+                    <h5 class="card-title ">{{ product }}</h5>
+                    <p class="card-text">{{product.description}}</p>
+                </div>
+            </div>
+            <div id="height-center" class="col-md-3">
+                <div class="card-body ">
+                    <p class="card-text"><small class="text-muted">
+                            {{ product.quantity }} x {{ product.product.price }} = {{ product.total_price }}</small></p>
+                </div>
+            </div>
+            <div id="height-center" class="col-md-3">
+                <div class="card-body ">
+                    <button class="btn btn-danger" unicorn:click="delete_item({{ product.pk }})">Delete</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+    <br><br>
+    <div class="card">
+        <div class="row">
+            <div class="col-md-3">
+                <h4>TOTAL: ${{ total }}</h4>
+            </div>
+            <div class="col">
+            </div>
+            <div class="col-md-3">
+                <button class="btn btn-success" type="submit">Proceed</button>
+            </div>
+        </div>
+    </div>
+    <br>
+    {% else %}
+    <div class="card">
+        <h2 class="d-flex justify-content-center">There are no products in your cart.</h2>
+    </div>
+
+    {% endif %}
+</div>

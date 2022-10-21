@@ -1,0 +1,10 @@
+{% extends "_base.html" %}
+{% load unicorn %}
+{% block title %}Products{% endblock title %}
+
+
+{% block content %}
+
+{% unicorn 'product_list' user=request.user.pk products=products %}
+
+{% endblock content %}
